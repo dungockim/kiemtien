@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kiemtien/common/app_colors.dart';
-import 'package:kiemtien/common/app_route.dart';
+import 'package:kiemtien/pages/login_and_signup/sign_up.dart';
 
 void main() {
   runApp(const KiemtienApp());
@@ -24,8 +24,7 @@ class KiemtienApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,
       ),
-      initialRoute: RouteName.splash,
-      onGenerateRoute: AppRoute.onGenerateRoute,
+      home: SignUpScreen(),
     );
   }
 }
