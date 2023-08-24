@@ -15,49 +15,67 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends BaseState<HomePage> {
-  static const ACCOUNT_TAB_INDEX = 2;
+  static const TASK_TAB_INDEX = 0;
+  static const RANK_TAB_INDEX = 1;
+  static const WITHDRAW_TAB_INDEX = 2;
 
-  final items = [
-    ItemBar(title: 'Nhiệm vụ',
+  final barItems = [
+    ItemBar(index: TASK_TAB_INDEX, title: 'Nhiệm vụ',
       icon: CupertinoIcons.square_list,
       selectedIcon: CupertinoIcons.square_list_fill,),
-    ItemBar(title: 'Xếp hạng',
+    ItemBar(index: RANK_TAB_INDEX, title: 'Xếp hạng',
       icon: CupertinoIcons.chart_bar_square,
       selectedIcon: CupertinoIcons.chart_bar_square_fill,),
-    ItemBar(title: 'Tài khoản',
+    ItemBar(index: WITHDRAW_TAB_INDEX, title: 'Rút tiền',
       icon: Icons.account_circle_outlined,
       selectedIcon: Icons.account_circle,),
   ];
 
-  int _selectedTabIndex = 0;
   final List<Widget> _pages = const [
     TaskPage(),
     RankPage(),
     AccountPage(),
   ];
   final _pageController = PageController();
+  int _selectedTabIndex = 0;
 
   @override
   Widget buildPage(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: _pageController,
-          children: _pages,
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageController,
+                children: _pages,
+              ),
+            ),
+            _buildBottomNavigationBar(),
+          ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: items.map((e) {
-          return BottomNavigationBarItem(icon: Icon(e.icon),
-            label: e.title,
-            activeIcon: Icon(e.selectedIcon,),);
-        }).toList(),
-        currentIndex: _selectedTabIndex,
-        onTap: _onItemBarSelected,
-        type: BottomNavigationBarType.fixed,
-      ),
     );
+  }
+  
+  Widget _buildBottomNavigationBar() {
+    return const SizedBox(
+      height: kBottomNavigationBarHeight,
+      child: Row(
+        children: barItems.map((e) {
+          return _buildBottomNavigationBarItem(index: e.index)
+        }).toList(),
+      ),
+    )
+  }
+  
+  Widget _buildBottomNavigationBarItem({required index}) {
+    return Expanded(child: Stack(
+      children: [
+        
+      ],
+    ))
   }
 
   _onItemBarSelected(int index) {
