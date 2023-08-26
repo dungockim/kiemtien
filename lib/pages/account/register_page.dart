@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kiemtien/bases/base_state.dart';
+import 'package:kiemtien/common/dimens.dart';
 import 'package:kiemtien/widgets/form_header_widget.dart';
-import 'package:kiemtien/constants/image_strings.dart';
-import 'package:kiemtien/constants/size.dart';
-import 'package:kiemtien/constants/text_strings.dart';
 
+import '../../common/image_name.dart';
 import '../../widgets/sign_up_form_widget.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,13 +20,13 @@ class _RegisterPageState extends BaseState<RegisterPage> {
       backgroundColor: const Color(0xFFEDEE10),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(tDefaultSize),
+          padding: const EdgeInsets.all(Dimens.spacing16),
           child: Column(
             children: [
               const FormHeaderWidget(
-                  image: tWelcomeScreenImage,
-                  title: tSignUpTitle,
-                  subtitle: tSignUpSubtitle),
+                  image: ImageName.register,
+                  title: "",
+                  subtitle: ""),
               const FormSignUp(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +42,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
                         child: OutlinedButton.icon(
                           onPressed: () {},
                           icon: const Image(
-                            image: AssetImage(tGoogleLogo),
+                            image: AssetImage(ImageName.google),
                             width: 20,
                           ),
                           label: const Text("Google"),
@@ -54,7 +53,7 @@ class _RegisterPageState extends BaseState<RegisterPage> {
                         child: OutlinedButton.icon(
                           onPressed: () {},
                           icon: const Image(
-                            image: AssetImage(tFacebookLogo),
+                            image: AssetImage(ImageName.facebook),
                             width: 20,
                           ),
                           label: const Text("Facebook"),
