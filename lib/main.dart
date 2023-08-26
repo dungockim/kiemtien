@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kiemtien/common/app_colors.dart';
-import 'package:kiemtien/common/app_route.dart';
+
+import 'common/app_route.dart';
 
 void main() {
   runApp(const KiemtienApp());
