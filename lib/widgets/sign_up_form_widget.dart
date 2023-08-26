@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/size.dart';
+import 'package:kiemtien/common/dimens.dart';
 import '../common/app_colors.dart';
 
 class FormSignUp extends StatelessWidget {
@@ -10,7 +10,7 @@ class FormSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: tFormHeight-15),
+      padding: const EdgeInsets.symmetric(vertical: Dimens.spacing16),
       child: Form(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
