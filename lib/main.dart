@@ -17,15 +17,40 @@ class KiemtienApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
 
     return MaterialApp(
       title: 'Kiemtien',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
       ),
+      debugShowCheckedModeBanner: false,
       initialRoute: RouteName.splash,
       onGenerateRoute: AppRoute.onGenerateRoute,
+    );
+  }
+
+  static void changeLightStatusBarTextColor() {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.indigo,
+          systemNavigationBarIconBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,)
+    );
+  }
+
+  static void changeDarkStatusBarTextColor() {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          systemNavigationBarIconBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
+          statusBarColor: Colors.transparent,)
     );
   }
 }
