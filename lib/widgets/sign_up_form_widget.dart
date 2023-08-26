@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../constants/size.dart';
-import '../app_colors.dart';
+import '../constants/size.dart';
+import '../common/app_colors.dart';
 
 class FormSignUp extends StatelessWidget {
   const FormSignUp({

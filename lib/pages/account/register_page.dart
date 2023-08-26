@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:kiemtien/common/app_colors.dart';
-import 'package:kiemtien/common/form/form_header_widget.dart';
+import 'package:kiemtien/bases/base_state.dart';
+import 'package:kiemtien/widgets/form_header_widget.dart';
 import 'package:kiemtien/constants/image_strings.dart';
 import 'package:kiemtien/constants/size.dart';
 import 'package:kiemtien/constants/text_strings.dart';
 
-import '../../common/form/sign_up_form_widget.dart';
+import '../../widgets/sign_up_form_widget.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  Widget build(BuildContext context){
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends BaseState<RegisterPage> {
+  @override
+  Widget buildPage(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFEDEE10),
       body: SingleChildScrollView(
@@ -29,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   const SizedBox(height: 8,),
                   const Text("OR", style: TextStyle(
-                    fontSize: 12
+                      fontSize: 12
                   ),),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +67,7 @@ class SignUpScreen extends StatelessWidget {
                       child: Text.rich(
                           TextSpan(
                               children: [
-                                TextSpan(text: "Bạn đã có tài khoản?", style: Theme.of(context).textTheme.bodyText1),
+                                TextSpan(text: "Bạn đã có tài khoản?", style: textTheme.bodyMedium),
                                 const TextSpan(text: " Đăng Nhập Ngay!")
                               ]
                           )

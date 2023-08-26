@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiemtien/common/app_route.dart';
 import 'package:kiemtien/common/dimens.dart';
 import 'package:kiemtien/common/image_name.dart';
 
@@ -119,20 +120,24 @@ class _AppHeaderState extends State<AppHeader> {
           height: kToolbarHeight,
           child: Padding(
             padding: const EdgeInsets.all(Dimens.spacing8),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xFFffeb82),
-                borderRadius: BorderRadius.circular(Dimens.radius100),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: Dimens.spacing8),
-              child: Row(
-                children: [
-                  const Icon(Icons.account_circle_outlined),
-                  const SizedBox(width: Dimens.spacing4,),
-                  Text('Đăng nhập', style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),),
-                ],
+            child: InkWell(
+              borderRadius: BorderRadius.circular(Dimens.radius100),
+              onTap: _loginTapped,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFFffeb82),
+                  borderRadius: BorderRadius.circular(Dimens.radius100),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: Dimens.spacing8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.account_circle_outlined),
+                    const SizedBox(width: Dimens.spacing4,),
+                    Text('Đăng nhập', style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  ],
+                ),
               ),
             ),
           ),
@@ -140,5 +145,9 @@ class _AppHeaderState extends State<AppHeader> {
         const SizedBox(width: Dimens.spacing16),
       ],
     );
+  }
+
+  void _loginTapped() {
+    Navigator.pushNamed(context, RouteName.login);
   }
 }
