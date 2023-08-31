@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kiemtien/bases/base_state.dart';
+import 'package:kiemtien/common/app_colors.dart';
 import 'package:kiemtien/common/dimens.dart';
+import 'package:kiemtien/common/image_name.dart';
+import 'package:kiemtien/common/utilities.dart';
 import 'package:kiemtien/models/task_group.dart';
 
 import '../../models/task.dart';
@@ -36,7 +39,8 @@ class _TaskPageState extends BaseState<TaskPage> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      if (item.code == 'play_game') _buildGameTasks(item.tasks)
+                      if (item.code == 'play_game') _buildGameTasks(item.tasks),
+                      if (item.code == 'daily') _buildDailyTasks(item.tasks),
                     ],
                   );
                 },
@@ -48,7 +52,7 @@ class _TaskPageState extends BaseState<TaskPage> {
       ),
     );
   }
-
+`
   Widget _buildGameTasks(List<Task> tasks) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -65,24 +69,64 @@ class _TaskPageState extends BaseState<TaskPage> {
                 ),
                 child: const SizedBox(),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    entry.value.name,
-                    style: textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      entry.value.name,
+                      style: textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                  _buildConditionDisplayText(entry),
-                ],
+                    _buildConditionDisplayText(entry),
+                  ],
+                ),
               ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        Utilities.formatCurrency(entry.value.prize),
+                        style: textTheme.titleLarge?.copyWith(
+                          color: Colors.amber,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(width: Dimens.spacing8),
+                      Image.asset(
+                        ImageName.money,
+                        width: Dimens.size24,
+                        height: Dimens.size24,
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Dimens.radius16),
+                      )
+                    ),
+                    child: Text('CHƠI', style: textTheme.bodyMedium?.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                  ),),
+                  ),
+                ],
+              )
             ],
           ),
         );
       }).toList(),
     );
+  }
+
+  Widget _buildDailyTasks(List<Task> tasks) {
+    return SizedBox();
   }
 
   Widget _buildConditionDisplayText(MapEntry<int, Task> entry) {

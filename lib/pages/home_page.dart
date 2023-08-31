@@ -106,14 +106,16 @@ class _HomePageState extends BaseState<HomePage> {
           child: Column(
             children: [
               SizedBox(
-                  height: Dimens.size32,
-                  width: Dimens.size32,
-                  child: Center(
-                      child: Image.asset(
+                height: Dimens.size32,
+                width: Dimens.size32,
+                child: Center(
+                  child: Image.asset(
                     item.icon,
                     width: iconSize,
                     height: iconSize,
-                  ))),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: Dimens.spacing4,
               ),

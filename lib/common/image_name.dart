@@ -11,4 +11,5 @@ class ImageName {
   static const String register = "${_baseUrl}ic_register.png";
   static const String google = "${_baseUrl}ic_google.png";
   static const String facebook = "${_baseUrl}ic_facebook.png";
+  static const String apple = "${_baseUrl}ic_apple.png";
 }

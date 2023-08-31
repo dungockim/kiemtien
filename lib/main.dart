@@ -35,10 +35,10 @@ class KiemtienApp extends StatelessWidget {
     );
   }
 
-  static void changeLightStatusBarTextColor() {
+  static void changeLightStatusBarTextColor({Color statusBarColor = Colors.indigo}) {
     SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
-          statusBarColor: Colors.indigo,
+        SystemUiOverlayStyle(
+          statusBarColor: statusBarColor,
           systemNavigationBarIconBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.dark,)
